@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<head/>
+<meta charset="UTF-8">
+
+<style/>
+body {background-color:#ECECEB; margin-left: 5% ; margin-right: 5%; margin-top: 0.25in;
+             font-family: verdana, arial,"trebuchet ms", helvetica, sans-serif;}
+.cellleft{width: 40% margin:0px; padding:6px; box-shadow: 1px 1px 3px #4F5B75 inset , -1px -1px 3px #4F5B75 inset, 1px 1px 3px #4F5B75, -1px -1px 3px #4F5B75;}
+.cellright{width: 60%; margin:0px; padding:6px; box-shadow: 1px 1px 3px #4F5B75 inset , -1px -1px 3px #4F5B75 inset, 1px 1px 3px #4F5B75, -1px -1px 3px #4F5B75;}
+.tableShadow{box-shadow: 2px 2px 5px #A6605F inset , -2px -2px 5px #A6605F inset; table-layout:fixed; width: 1000px;}
+.tableShadow2{box-shadow: 1px 1px 3px #854D4C, -1px -1px 3px #854D4C, 2px 2px 5px #A6605F inset ,-2px -2px 5px #A6605F inset; table-layout:fixed;}
+.paragraphHeading{font-weight: bold; font-size: 24px; text-shadow: 1px 1px 2px #4F5B75}
+#addBut{}
+#addBut:hover{background-color: #2D9191; height: 40px; color: #ECECEB; font-weight: bold; 
+text-shadow: 1px 0px 1px black,-1px 0px 1px black,0px 1px 1px black,0px -1px 1px black;
+box-shadow: 2px 2px 4px #A6605F; text-decoration: underline;}
+#addBut:active{border: 3px solid #AA5A50; box-shadow: 2px 2px 4px #AA5A50;}
+#addbut:focus {outline: 0; background-color: #2D9191;}
+.But{font-weight: bold; font-size: 18px; text-decoration: underline; background-color:#4F5B75 ;height: 40px; color:#ECECEB; border-radius: 12px; border: 3px solid #A6605F;}
+.But:focus {outline: 0; background-color: #2D9191;}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+</head>
+<body onload="load_page()">
+<h1 style="text-shadow: 1px 1px 3px #A6605F">States of America Regional Tour (S.T.A.R.T) web form</h1>
+<table border=0>
+	<tr>
+		<td>
+			<p style="font-size: 16;}">Fill out this form to create list of sites for people to visit using the S.T.A.R.T app.
+				Each time you fill the form out and click the "Add Site" button it adds a site to the list.
+				You may save your current list and load it later. Be cautious about grammar and spelling.
+				The app will display everything you enter <u>Exactly</u> as you enter it.
+			</p>
+		</td>
+	</tr> 
+</table>
+
+
+
+<p>State<select name=state id=state ></select></p>
+<p>State(Abbreviation)<select id=state-abbr></select></p>
+<p>Town/City<input type=text size=20 name=town id=town value=''></p>
+
+<p>Fill this form out with Exactly what you want the app to say.
+<p class="paragraphHeading"><u>Add A New Site</u></p>
+<table border="0" style="width:92%; margin:0px; padding:0px;">
+<tr/>
+<td/>
+ <table border="1" style="width:99%; margin:0px; padding:0px;" class="tableShadow">
+ <td>
+ <div>
+	Name Of Site<input type=text size=20 name=sitename id=sitename value=''></p>
+	<p>Address<input type=text size=20 name=streetName id=streetName value=''>
+	Zip Code<input type=text size=20 name=zipCode id=zipCode value=''></p>
+	<p>Example: 11 Rhode Rd.  AA  01011</p>
+ </div>
+	<p style="font-weight: bold; font-size: 16;}">Category (Pick one):</p>
+ <div class="categories" id="categoriesID">
+	<label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Museum"  id="Museum"  name="rad" /> Museum
+	</label>
+	<label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Historical Site" id="Historical Site"   name="rad" /> Historical Site
+	</label>
+	<label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Shopping"  id="Shopping" name="rad" /> Shopping
+	</label>
+	<label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Arts and Performing" id="Art and Performing"  name="rad" /> Arts and Performing
+	</label>
+	<label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Movie Theater" id="Movie Theater"  name="rad" /> Movie Theater
+	</label></p>
+	<p><label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Religious Building" id="Religious Building"  name="rad" /> Religious Building
+	</label>
+	<label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Hotel" id="Hotel" name="rad" /> Hotel
+	</label>
+	<label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Stadium" id="Stadium"   name="rad" /> Stadium
+	</label>
+	<label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Parks and Recreation" id="Parks and Recreation"  name="rad" /> Parks
+	</label>
+	<label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Food" id="Food" name="rad" /> Food
+	</label>
+	<label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Theme Park" id="Theme Park"  name="rad" /> Theme Park
+	</label>
+	<label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Education" id="Education" name="rad" /> Education
+	</label>
+	<label class="input-check">
+		<input onchange="change_state(this, this.id)" type="radio" value="Iconic Landmarks" id="Iconic Landmarks" name="rad" /> Iconic Landmarks
+	</label>
+	<p id=radioSelection></p>
+ </div></p>
+ <div>
+	<p>Brief Description(100 Characters):</p>
+	<textarea name="briefDesc"  cols="50" rows="2" maxlength="100" style="resize:none" id=briefDesc></textarea>
+	<p>Long Description(300 Characters):</p>
+	<textarea name="longDesc" cols="50" rows="6" maxlength="300" style="resize:none" id=longDesc></textarea>
+	<p>To Have an image display on the app next to the site you need to supply a permanent URL
+	link to the image itself. I recommend using imgur.com to upload the image and get a link to it. If you have a picture of the site on a website already right click on it and choose copy link URL then paste it here.</p>
+	<p>Image URL</p>
+	<input type=text style="width: 95%" name=imageURL id=imageURL><br>
+ </div>
+ </td>
+ </table>
+	<p>Click to generate the formatted data.</p>
+	<p> <input type ="button" class="But" id="addBut" name="generateBut" onclick="genSite()" value="Generate Site"></p>
+	<p>This text box displays your site, this can only be in the generated format to work correctly.
+	<p><input type="text" id="genSiteTxt" style="width: 95%" value=''/></p>
+	<p>Click to add this site to the list. Or click edit to edit this site if you made a mistake.</p><p>
+		<input type ="button" class="But" id="addBut" name="addasite" onclick="addsite()" value="Add Site To List">
+	<input type ="button" class="But" id="addBut" name="editSiteBut" onclick="pasteSiteData()" value="Edit This Site"></p>
+	<p id="bottomText"></p>
+ <br></br>
+ <br></br>
+ <p class="paragraphHeading"><u>Save & Load your list of sites</u></p>
+ <table border="0" class="tableShadow2" style="width:99%; margin:0px; padding:0px;">
+	<tr>
+	<td>
+		<table border="0" style="width:99%; margin:2px; padding:2px;" ><p class="paragraphHeading">Save Your Sites</p>
+			<tr style="box-shadow: 1px 1px 3px #4F5B75 inset , -1px -1px 3px #4F5B75 inset, 1px 1px 3px #4F5B75, -1px -1px 3px #4F5B75;">
+				<td class=cellleft>
+					<p>Save the sites you entered for future reference. This allows you to add sites later.
+					Sadly editing sites is not yet possible. In order to add more sites later you must use the same computer and browser.</p>
+					<p><input type="button" class="But" id="addBut" name="saveyourSites" onclick=savesites() value="Save your sites locally"></p>
+					<p id=isSaved></p>
+					<br></br>
+					<br></br>
+					<p><input type="button" class="But" id="addBut" name="clearSavedSites" onclick=clearlocal() value="Clear your saved sites"/> This Deletes <u>All</u> Data</p>
+				</td>
+				<td class=cellright>
+					<p>This is your list of sites. You can paste this into the load text box to load it back into the form.</p>
+					<p><textarea id=textToCopy cols="70" style="resize:vertical; border:1px solid #4F5B75; width:95%; margin:5px; padding:3px;" rows="12"></textarea></p>
+				</td>
+			</tr>
+		</table>
+		<br>
+	</td>
+	</tr>
+	<tr>
+	<td>
+		<table border="0" style="width:99%; margin:2px; padding:2px;" ><p class="paragraphHeading">Load Your Sites</p>
+			<tr style="box-shadow: 1px 1px 3px #4F5B75 inset , -1px -1px 3px #4F5B75 inset, 1px 1px 3px #4F5B75, -1px -1px 3px #4F5B75;">
+				<td class=cellleft>
+					<p id=loadedbutton>Press to load your list of sites. Use if you pressed the save locally button to save previously</p>
+					<p><input type="button" class="But" id="addBut" name="load_LocalStorage" onclick=loadlocally() value="Load your local sites"></p>
+				</td>
+				<td class=cellright >
+					<p id=loadedtext>Paste text you copied from a previous session into the textbox below. 
+					Press load to load a string into the form.</p>
+					<p><textarea id=texttoload cols="70" rows="12" style="resize:vertical; border:1px solid #4F5B75; width:95%; margin:5px; padding:3px;" ></textarea></p>
+					<p><input type=button class="But" id="addBut" name=load_textbox onclick=loadtext() value="Load List From Text Box"></p>
+				</td>
+			</tr>
+		</table>
+	</td>
+	</tr>
+	<!--  <tr>
+	<td>
+		<p class="paragraphHeading">Edit A Site</p>
+		<p style="font-size: 18px"><b><u>Directions</u></b></p>
+		<p>To edit a site you need to take one site from your list of sites, each site is formatted like this:</p>
+		<p>["state","town","adress,town,ST,11111","site","catagory","brief description","long description","imageURL"]
+		<p>Copy the site you want to edit and paste it into the text box below, then press Edit and it will allow you to edit the site.</p>
+		<p style="font-size: 18px; color= red;"><b><u>Warning!</u></b></p>
+		<p>When you edit a site and click Add Site it will duplicate the site you edited!</p>
+		<p>To edit a site correctly do the following: 1) Copy your list of sites from the Save Sites text box. 2) Paste your entire list of sites into the Load List text box
+		3) Cut the site you want to edit out of the text box. 4) Paste the site into the text box below. 5) Edit 6) Press Generate Site 
+		7) Copy the generated site and paste it into your list of sites in the load List text box. 8) Press Load List From Text Box.</p>
+		<p><input type="text" id="genSiteTxt" style="width: 95%" value=''/></p>
+		<p> <input type ="button" class="But" id="addBut" name="editSiteBut" onclick="pasteSiteData()" value="Edit This Site"></p>
+	</td>
+	</tr> -->
+  </table>
+</div>
+</td>
+</tr>
+</table>
+<form action="http://mah-tour-9z8x1q-test.appspot.com/storeavalue" method="post" enctype=application/x-www-form-urlencoded id="form-id">
+<input type="hidden" id="storeTag" name="tag"/>
+<input type="hidden" id="storeValue" name="value"/> 
+<input type="hidden" name="fmt" id="fmt" value="html"/>
+<p><b style="font-size:18">Only Submit when you have added every site for your town.</p>
+<p>These sites will be reviewed before added to the actual app. Any illegitimate towns or sites will be removed.</b></p> 
+<input type="submit" class="But" id="addBut" value="Submit Your List To App"></p> 
+</form>
+
+<p id=submitted></p>
+<!--==============================================================-->
+<!----------------------------SCRIPT-------------------------------->
+<!--==============================================================-->
+<script type="text/javascript">
+	var CATAGORY_CHECKED = 'undefined';
+	var CURRENT_LIST;
+	var CURRENT_TOWN;
+	
+	function load_page(){
+		var states = new Array("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", 
+		"District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", 
+		"Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", 
+		"New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", 
+		"Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", 
+		"Wisconsin", "Wyoming", "District of Columbia", "Puerto Rico", "Guam", "American Samoa", "U.S. Virgin Islands","Northern Mariana Islands");
+		var stateAbbrList = new Array("AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", 
+			"IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV",
+		"NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY");
+	
+		var sel = document.getElementById('state-abbr');
+		for(var i = 0; i < stateAbbrList.length; i++) {
+		var opt = document.createElement('option');
+		opt.innerHTML = stateAbbrList[i];
+		opt.value = stateAbbrList[i];
+		sel.appendChild(opt);
+		}
+		var selection = document.getElementById('state')
+		for(var i = 0; i < states.length; i++) {
+		var options = document.createElement('option');
+		options.innerHTML = states[i];
+		options.value = states[i];
+		selection.appendChild(options);
+		}
+	}
+	function change_state(obj, objID) {
+	  if (obj.checked) {
+		//if radiobutton is being checked, add a "checked" class
+		obj.parentNode.classList.add('checked');
+		CATAGORY_CHECKED = obj.value;
+	  } 
+	  else {
+		//else remove it
+		obj.parentNode.classList.remove('checked');
+	  }
+	}
+	function genSite(){
+		var alerted = false;  //alerted is false if all fields of the form are filled out, 
+		//it is true when an alert comes up to tell the user they forgot to fill something out
+	    var currentCatagory = CATAGORY_CHECKED;
+		var newSite; //the data for the site they added
+		//These set variables to the values filled out in the form
+		var currentState = document.getElementById('state').value;
+		var currentTown =  document.getElementById('town').value;
+		var currentStreetName = document.getElementById('streetName').value;
+		var currentStateAbbr = document.getElementById('state-abbr').value;
+		var currentZipCode = document.getElementById('zipCode').value;
+		var currentSite = document.getElementById('sitename').value;
+		var currentBriefDesc = document.getElementById('briefDesc').value;
+		var currentLongDesc = document.getElementById('longDesc').value;
+		var currentImageURL = document.getElementById('imageURL').value;
+		var currentAddress;
+		
+	//checks to see if any fields in the form are blank, brings up an alert if any are blank
+	    if(currentState == '' || currentState == 'undefined' || currentState == ' '){
+		   alert("Please specify the state");
+		   alerted = true;
+		}else if(currentTown == '' || currentTown == 'undefined' || currentTown == ' '){
+			alert("Please specify the town");
+			alerted = true;
+		}else if(currentStreetName == '' || currentStreetName == 'undefined' || currentStreetName == ' '){
+			alert("Please specify the Adress");
+			alerted = true;
+		}else if(currentStateAbbr == '' || currentStateAbbr == 'undefined' || currentStateAbbr == ' '){
+			alert("Please specify the State Abbreviation");
+			alerted = true;
+		}else if(currentZipCode == '' || currentZipCode == 'undefined' || currentZipCode == ' '){
+			alert("Please specify the Zip Code");
+			alerted = true;
+		}else if(currentSite == '' || currentSite == 'undefined' || currentSite == ' '){
+			alert("Please specify the Site name");
+			alerted = true;
+		}else if (currentCatagory == 'undefined'){
+		    alert("Please Check a catagory");
+		    alerted = true;
+		}else if(currentBriefDesc == '' || currentBriefDesc == 'undefined' || currentBriefDesc == ' '){
+			alert("Please add a Brief Description");
+			alerted = true;
+		}else if(currentLongDesc == '' || currentLongDesc == 'undefined' || currentLongDesc == ' '){
+			alert("Please add a Long Description");
+			alerted = true;
+		}else if (currentImageURL == '' || currentImageURL == 'undefined' || currentImageURL == ' '){
+			//this allows adding an image url to be optional.
+			if (confirm("You did not add an Image URL. Do you wish to continue?") == true){
+				alerted = false; //if they click ok
+			}else {
+				alerted = true; //if they click cancel
+			}
+		}else{
+		alerted = false;
+		}
+		//if no alerts have come up telling the user that fields are empty
+		if (alerted == false){
+			//sets all the fields to empty (except state and town).
+			document.getElementById('streetName').value = '';
+			document.getElementById('zipCode').value = '';
+			document.getElementById('sitename').value = '';
+			document.getElementById('briefDesc').value = '';
+			document.getElementById('longDesc').value = '';
+			document.getElementById('imageURL').value = '';
+			
+			//unchecks all radiobuttons if they are checked
+			var radioElements = document.getElementsByName("rad");
+			for(var i=0; i < radioElements.length; i++){ 
+				if(radioElements[i].checked){
+					radioElements[i].checked = false;
+					CATAGORY_CHECKED = 'undefined';
+				break;}
+		    }
+		  //formats the address
+		  currentAddress = (currentStreetName + ',' + currentTown + ',' + currentStateAbbr + ',' + currentZipCode);
+		  //formats the new site
+		  newSite = ('[' + '"' + currentState + '"' + ','+ '"' + currentTown + '"' + ','+ '"' + currentAddress + '"' + ','+ '"' + currentSite + '"' + ','+ '"' + currentCatagory + '"' + ',' + '"' + currentBriefDesc + '"' + ',' + '"' + currentLongDesc + '"' + ',' + '"' + currentImageURL + '"' + ']'); 
+		  //fills the text area with the formatted site
+		  document.getElementById('genSiteTxt').value = newSite;
+		  document.getElementById('loadedbutton').innerHTML = "";
+		  document.getElementById('isSaved').innerHTML = ""
+		  document.getElementById('bottomText').innerHTML = '';
+	    } 
+	}
+	function addsite(){
+	
+	var siteText = document.getElementById('genSiteTxt').value
+	if( siteText !== "" && siteText !== 'undefined' && siteText !== '[]'){
+	 if(sessionStorage.SavedTown){
+	  CURRENT_LIST = removeBrackets(sessionStorage.SavedTown);
+	  }else{
+		CURRENT_LIST = ''; 
+		sessionStorage.SavedTown = CURRENT_LIST;  
+	  }
+	 var newSite = document.getElementById('genSiteTxt').value;
+	  CURRENT_LIST = removeBrackets((CURRENT_LIST + newSite));
+	  sessionStorage.SavedTown = removeBrackets(CURRENT_LIST);
+	  document.getElementById('textToCopy').value = removeBrackets(CURRENT_LIST);
+	  document.getElementById('storeTag').value =  (document.getElementById('town').value + '_' + document.getElementById('state').value);
+	  document.getElementById('storeValue').value = removeBrackets(CURRENT_LIST);
+	  document.getElementById('loadedbutton').innerHTML = "";
+	  document.getElementById('isSaved').innerHTML = ""
+	   document.getElementById('bottomText').innerHTML = '';
+	}else{
+	 document.getElementById('bottomText').innerHTML = "Textbox is empty. Generate a site."
+	}
+	}
+	function savesites(){
+		var town = localStorage.town_list;
+		if (localStorage.town_list){
+			localStorage.town_list = (removeBrackets(town) + removeBrackets(CURRENT_LIST));
+		}else{
+			localStorage.town_list = removeBrackets(CURRENT_LIST);
+		}
+		document.getElementById('isSaved').innerHTML =  "Saved";
+	}
+	
+	
+	function loadlocally(){
+		if (localStorage.town_list){
+			if(localStorage.town_list !== 'undefined'){
+			document.getElementById('textToCopy').value = '';
+			CURRENT_LIST = localStorage.town_list;
+			document.getElementById('loadedbutton').innerHTML = "Loaded";
+			document.getElementById('textToCopy').value = removeBrackets(localStorage.town_list);
+			CURRENT_LIST =  removeBrackets(localStorage.town_list);
+			townName = localStorage.town_list.split('","',2);
+			state1 = townName[0].split('"');
+			state2 = state1[1];
+			document.getElementById('storeTag').value = (townName[1]+'_'+state2)
+	        document.getElementById('storeValue').value = removeBrackets(CURRENT_LIST);
+			sessionStorage.removeItem("SavedTown");
+			}else{
+				document.getElementById('loadedbutton').innerHTML = "No Data Stored";
+			}
+		}else{
+			document.getElementById('loadedbutton').innerHTML = "No Data Stored";
+		}
+	}
+
+	function loadtext(){
+		var text = document.getElementById('texttoload').value;
+		if (text !== ''){
+		CURRENT_LIST = (removeBrackets(text));
+		//CURRENT_LIST= CURRENT_LIST(/(\[*)((\[)+)((\,)*)(\1\[)/,'[[');
+		//CURRENT_LIST = CURRENT_LIST(/((\])+)((\,?)\]+)/,']]');
+		townName = CURRENT_LIST.split('","',2);
+	    state1 = townName[0].split('"');
+		state2 = state1[1];
+		document.getElementById('storeTag').value = (townName[1]+'_'+state2)
+	    document.getElementById('storeValue').value = (CURRENT_LIST);
+		localStorage.removeItem("town_list");
+		document.getElementById('loadedtext').innerHTML = "Loaded";
+		document.getElementById('textToCopy').value = (CURRENT_LIST);
+		sessionStorage.removeItem("currentTown");
+		}else{
+			document.getElementById('loadedtext').innerHTML = "No Data In Text Box";
+		}
+		
+	}
+	function clearlocal(){
+		sessionStorage.removeItem("currentTown");
+		sessionStorage.removeItem("SavedTown");
+		CURRENT_LIST =''
+		localStorage.removeItem("town_list");
+		document.getElementById('textToCopy').value = '';
+		document.getElementById('loadedbutton').innerHTML = "";
+		document.getElementById('isSaved').innerHTML = ""
+	}
+	
+	function pasteSiteData(){
+	var str = document.getElementById('genSiteTxt').value;
+    var res = str.split('","');
+    var stateUnsplit = res[0].split('"');
+    var state = stateUnsplit[1];
+    var town = res[1];
+    var adress = res[2].split(',');
+    var streetAdress = adress[0];
+    var stateAbbr = adress[2];
+    var zip = adress[3];
+    var site = res[3];
+    var catagory = res[4];
+    var briefDesc = res[5];
+    var longDesc = res[6];
+    var imURLunsplit = res[7].split('"');
+    var imageURL = imURLunsplit[0];
+	document.getElementById('streetName').value = streetAdress;
+	document.getElementById('zipCode').value = zip;
+	document.getElementById('sitename').value = site;
+	document.getElementById('briefDesc').value = briefDesc;
+	document.getElementById('longDesc').value = longDesc;
+	document.getElementById('imageURL').value = imageURL;
+	document.getElementById('state').value = state;
+	document.getElementById('state-abbr').value = stateAbbr;
+	document.getElementById('town').value = town;
+	 var radioElements = document.getElementsByName("rad");
+	 for(var i=0; i < radioElements.length; i++){ 
+		if(radioElements[i].checked){
+		   radioElements[i].checked = false;
+		   CATAGORY_CHECKED = 'undefined';
+		   break;}
+		   }
+	 for(var i=0; i < radioElements.length; i++){ 
+		if(radioElements[i].value == catagory){
+			radioElements[i].checked = true;
+		    CATAGORY_CHECKED = radioElements[i].value;
+	   }
+    }
+	document.getElementById('genSiteTxt').value = '';
+    }
+	
+	function removeBrackets(Strang){
+	Strang = ( "[" + Strang + "]");
+	Strang = Strang.replace(/\]([^\]],*)\]/, ']]');
+	while(Strang.search(/(\[)\1+/) !== -1 || Strang.search(/(\])\1+/) !== -1){ 
+	Strang = Strang.replace(/(\[)\1+/,'[');
+	Strang = Strang.replace(/(\])\1+/,']');
+	}
+	Strang = Strang.replace(/\]([^\[,]*)\[/, '],[');
+	Strang = ( "[" + Strang + "]");
+
+	return(Strang);
+	}
+	
+jQuery(document).submit(function(e){
+    var form = jQuery(e.target);
+    if(form.is("#form-id")){ // check if this is the form that you want (delete this check to apply this to all forms)
+        e.preventDefault();
+		$("#submitted").html("Submitted");
+        jQuery.ajax({
+            type: "POST",
+            url: form.attr("action"), //tells it where to post to using the action attribute of the form. 
+            data: form.serialize(), // serializes the form's elements.
+            success: function(){
+            $("#submitted").html("Submitted");
+            }
+		});
+		return false;
+		$("#submitted").html("Submitted");
+   }
+   return false;
+   $("#submitted").html("Submitted");
+});
+</script>
+</body>
